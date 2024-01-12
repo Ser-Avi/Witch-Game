@@ -1,79 +1,76 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
-using UnityEngine.U2D;
-using UnityEngine.UIElements;
 
 public class Ingredient : MonoBehaviour
 {
-    [SerializeField] bool isMouseOver = false;
-    [SerializeField] float cauldronAddingOffset = 0.2f;
+    Vector2 startPos;
+
+    //Temp test vars
     private Renderer rend;
     private Color startColor;
-    private UnityEngine.Vector3 mousePos;
-    private UnityEngine.Vector3 cornerA;
-    private UnityEngine.Vector3 cornerB;
-    private UnityEngine.Vector3[] points;
+
+    //Dragging
+    bool isMouseOver = false;
+    bool isDragging = false;
+    private Vector3 mousePos;
+    private Vector3 cornerA;
+    private Vector3 cornerB;
+    [SerializeField] float cauldronAddingOffset = 0.2f;
 
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
+
         rend = GetComponent<Renderer>();
-
         startColor = rend.material.color;
-
-        points = new UnityEngine.Vector3[2] { cornerA, cornerB };
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void LateUpdate()
-    {
         if (isMouseOver)
         {
-            MoveManager();
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = -0.1f;
+            ClickManager();
+            if (isDragging)
+            {
+                //transform.Translate(mousePos);
+                transform.position = mousePos;
+            }
         }
     }
 
-    void MoveManager()
+    void ClickManager()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = -0.1f;
-
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            transform.position = mousePos;
+            isDragging = true;
         }
-
         if (Input.GetMouseButtonUp(0))
         {
-            ReleaseManager();
+            isDragging = false;
+            CauldronChecker();
         }
     }
 
-    void ReleaseManager()
+    void CauldronChecker()
     {
-        Debug.Log("released");
         cornerA = mousePos + new UnityEngine.Vector3(-cauldronAddingOffset, -cauldronAddingOffset, 0);
         cornerB = mousePos + new UnityEngine.Vector3(cauldronAddingOffset, cauldronAddingOffset, 0);
-        //Debug.Log(cornerA);
-        Debug.Log(mousePos);
-        //Debug.Log(cornerB);
         Collider2D[] overlap = Physics2D.OverlapAreaAll(cornerA, cornerB);
-        if (overlap.Length>1 && overlap[1].gameObject.CompareTag("Cauldron"))
+        if (overlap.Length > 1 && overlap[1].gameObject.CompareTag("Cauldron"))
         {
             Debug.Log("Item added");
         }
-        else if (overlap.Length>1)
+        else if (overlap.Length > 1)
         {
             Debug.Log(overlap[1].gameObject.name);
+            Debug.Log("Uh oh");
+        }
+        else
+        {
+            transform.position = startPos;
         }
     }
 
@@ -87,12 +84,8 @@ public class Ingredient : MonoBehaviour
     void OnMouseExit()
     {
         isMouseOver = false;
+        isDragging = false;
+        CauldronChecker();
         rend.material.color = startColor;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLineStrip(points, true);
     }
 }
