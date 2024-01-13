@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
+    [SerializeField] GameObject levelChanger;
     public void StartNew()
     {
-        SceneManager.LoadScene(1);
+        levelChanger.GetComponent<LevelChanger>().FadeToNext();
     }
 }
