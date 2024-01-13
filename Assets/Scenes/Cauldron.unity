@@ -222,9 +222,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 5
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":56,"yPos":218.5},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Heck
-    yeah I am!","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":394,"yPos":235.5},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Nope...","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":223.75,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Lets-a-go-ah!
-    Mamma-mia! U ready?","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Mario","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0.503},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":271,"yPos":340.5},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"K","parentUIDs":[2],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Mario","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":48,"yPos":338.5},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Here
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":49,"yPos":100.5},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Heck
+    yeah I am!","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":387,"yPos":117.5},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Nope...","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":216.75,"yPos":-96},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Lets-a-go-ah!
+    Mamma-mia! U ready?","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Mario","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0.503},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":264,"yPos":222.5},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"K","parentUIDs":[2],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Mario","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":41,"yPos":220.5},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Here
     we go!","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Mario","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
@@ -240,7 +240,19 @@ MonoBehaviour:
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2022010952}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: FadeToNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &512225620
 Transform:
   m_ObjectHideFlags: 0
@@ -319,7 +331,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -526,7 +538,7 @@ Transform:
   m_GameObject: {fileID: 742569289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: -0.93, z: -0.05}
+  m_LocalPosition: {x: 0.52, y: -0.5, z: -0.05}
   m_LocalScale: {x: 3.52, y: 3.52, z: 3.52}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -659,6 +671,10 @@ PrefabInstance:
     - target: {fileID: 3379847882640666012, guid: 18c69ddd5e896407fba605399a9a3dc9, type: 3}
       propertyPath: m_Name
       value: Level Changer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379847882640666012, guid: 18c69ddd5e896407fba605399a9a3dc9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8240609421436134440, guid: 18c69ddd5e896407fba605399a9a3dc9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -980,7 +996,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2022010952}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: FadeToNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NodeID: 4
   TMPFont: {fileID: 0}
   Icon: {fileID: 0}
@@ -1076,6 +1104,17 @@ MonoBehaviour:
   TMPFont: {fileID: 0}
   Icon: {fileID: 0}
   Audio: {fileID: 8300000, guid: a870ef9612e454a56ae19e1d799a079d, type: 3}
+--- !u!114 &2022010952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8823317646466585252, guid: 18c69ddd5e896407fba605399a9a3dc9, type: 3}
+  m_PrefabInstance: {fileID: 1156710764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1733f82c4ba6a4d4eab8b26d3edb1241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2064980822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a4f13e9bea50484197c260b88ce4917, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edcefadf7fc664dba92fc575f551724f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
