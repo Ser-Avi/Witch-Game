@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ingredient : MonoBehaviour
@@ -32,7 +31,6 @@ public class Ingredient : MonoBehaviour
             ClickManager();
             if (isDragging)
             {
-                //transform.Translate(mousePos);
                 transform.position = mousePos;
             }
         }
@@ -53,17 +51,19 @@ public class Ingredient : MonoBehaviour
 
     void CauldronChecker()
     {
-        cornerA = mousePos + new UnityEngine.Vector3(-cauldronAddingOffset, -cauldronAddingOffset, 0);
-        cornerB = mousePos + new UnityEngine.Vector3(cauldronAddingOffset, cauldronAddingOffset, 0);
+        cornerA = mousePos + new Vector3(-cauldronAddingOffset, -cauldronAddingOffset, 0);
+        cornerB = mousePos + new Vector3(cauldronAddingOffset, cauldronAddingOffset, 0);
         Collider2D[] overlap = Physics2D.OverlapAreaAll(cornerA, cornerB);
         if (overlap.Length > 1 && overlap[1].gameObject.CompareTag("Cauldron"))
         {
-            Debug.Log("Item added");
-        }
-        else if (overlap.Length > 1)
-        {
-            Debug.Log(overlap[1].gameObject.name);
-            Debug.Log("Uh oh");
+            for (int i = 1; i < overlap.Length; i++)
+            {
+                if (overlap[1].gameObject.CompareTag("Cauldron"))
+                {
+                    Debug.Log(string.Format("{0} added", name));
+                    gameObject.SetActive(false);
+                }
+            }
         }
         else
         {
@@ -75,7 +75,6 @@ public class Ingredient : MonoBehaviour
     {
         isMouseOver = true;
         itemImage.GetComponent<SpriteRenderer>().sprite = highlightSprite;
-        Debug.Log("Mouse Entered");
     }
 
     void OnMouseExit()
