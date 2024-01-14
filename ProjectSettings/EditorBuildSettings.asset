@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NarratorScene.unity
     guid: 02414354b774d4bd8870b01c2f3a1347
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/VisitorScene.unity
     guid: b367e3b9fa29e45ad9ec957844c8e0da
-  - enabled: 0
-    path: Assets/Scenes/Cauldron.unity
+  - enabled: 1
+    path: Assets/Scenes/CauldronScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
