@@ -22,4 +22,9 @@ public class LevelChanger : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void FadeIn()
+    {
+        fadeAnimator.SetTrigger("Fade In");
+    }
 }
