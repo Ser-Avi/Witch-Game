@@ -1,12 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
     Vector2 startPos;
-
-    //Temp test vars
-    private Renderer rend;
-    private Color startColor;
+    [SerializeField] GameObject itemImage;
+    [SerializeField] Sprite startSprite;
+    [SerializeField] Sprite highlightSprite;
 
     //Dragging
     bool isMouseOver = false;
@@ -20,9 +20,6 @@ public class Ingredient : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-
-        rend = GetComponent<Renderer>();
-        startColor = rend.material.color;
     }
 
     // Update is called once per frame
@@ -77,8 +74,8 @@ public class Ingredient : MonoBehaviour
     void OnMouseEnter()
     {
         isMouseOver = true;
-        rend.material.color = Color.red;
-
+        itemImage.GetComponent<SpriteRenderer>().sprite = highlightSprite;
+        Debug.Log("Mouse Entered");
     }
 
     void OnMouseExit()
@@ -86,6 +83,6 @@ public class Ingredient : MonoBehaviour
         isMouseOver = false;
         isDragging = false;
         CauldronChecker();
-        rend.material.color = startColor;
+        itemImage.GetComponent<SpriteRenderer>().sprite = startSprite;
     }
 }
